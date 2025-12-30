@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.light,
+html:not(.dark),
+.dark,
+html.dark {
+  background-color: rgb(var(--bg-color));
+}
+
+/* Custom Scrollbar Styles */
+/* Pour les navigateurs WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgb(var(--primary-color)), rgb(var(--secondary-color)));
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0891b2, #2563eb);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Scrollbar pour le mode sombre */
+.dark ::-webkit-scrollbar-track,
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb,
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgb(var(--bg-color)), rgb(var(--surface-color)));
+  border: 2px solid rgb(var(--text-muted-color) / 0.1);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgb(var(--surface-color)), rgb(var(--border-color)));
+  border: 2px solid rgb(var(--text-muted-color) / 0.2);
+}
+
+/* Scrollbar pour le mode clair */
+.light ::-webkit-scrollbar-track,
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.light ::-webkit-scrollbar-thumb,
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgb(var(--border-color)), rgb(var(--surface-color)));
+  border: 2px solid rgb(var(--text-muted-color) / 0.1);
+}
+
+.light ::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgb(var(--surface-color)), rgb(var(--border-color)));
+  border: 2px solid rgb(var(--text-muted-color) / 0.2);
+}
+
+/* Scrollbar pour Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #06b6d4 transparent;
+}
+
+.dark *,
+[data-theme="dark"] * {
+  scrollbar-color: #334155 transparent;
+}
+
+.light *,
+[data-theme="light"] * {
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Animation de glow pour la scrollbar */
+@keyframes scrollbar-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+  }
+}
+
+::-webkit-scrollbar-thumb:active {
+  animation: scrollbar-glow 1s ease-in-out;
+}
+
+/* Scrollbar spéciale pour les zones de contenu principales */
+.content-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  border-radius: 4px;
+}
+
+.content-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0891b2, #7c3aed);
+}
+
+/* Mini scrollbar pour les éléments plus petits */
+.mini-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.mini-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mini-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.6);
+  border-radius: 3px;
+}
+
+.mini-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.8);
+}
+
+/* Scrollbar fine pour les hashes dans le tableau admin */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Versions mode sombre pour scrollbar fine */
+.dark .scrollbar-thin::-webkit-scrollbar-thumb,
+[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.4);
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.6);
+}
